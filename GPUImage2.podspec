@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
   s.name             = 'GPUImage2'
   s.version          = '0.1.0'
-  s.summary          = 'A short description of GPUImage2.'
+  s.summary          = '基于GPUImage2自定义滤镜版本'
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?
@@ -25,13 +25,17 @@ TODO: Add long description of the pod here.
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'ZDerain' => 'derainzhou@gmail.com' }
-  s.source           = { :git => 'https://github.com/ZDerain/GPUImage2.git', :tag => s.version.to_s }
+  s.source           = { :git => 'https://github.com/ATiOSGroup/GPUImage2.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
-  s.ios.deployment_target = '8.0'
+  s.ios.deployment_target = '9.0'
 
-  s.source_files = 'GPUImage2/Classes/**/*'
-  
+  s.source_files = 'GPUImage2/**/*'
+  s.source_files = 'GPUImage2/Source/**/*.{swift}'
+  s.resources = 'GPUImage2/Source/Operations/Shaders/*.{fsh}'
+  s.requires_arc = true
+  s.xcconfig = { 'CLANG_MODULES_AUTOLINK' => 'YES', 'OTHER_SWIFT_FLAGS' => "$(inherited) -DGLES"}
+
   # s.resource_bundles = {
   #   'GPUImage2' => ['GPUImage2/Assets/*.png']
   # }

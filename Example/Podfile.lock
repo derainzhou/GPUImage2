@@ -1,0 +1,16 @@
+PODS:
+  - GPUImage2 (0.1.0)
+
+DEPENDENCIES:
+  - GPUImage2 (from `../`)
+
+EXTERNAL SOURCES:
+  GPUImage2:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  GPUImage2: 75cf1bb0171917894b42e48e6921c0a4178cb406
+
+PODFILE CHECKSUM: 6efd602dfc2c196baf70bb682bc213256ac68bbe
+
+COCOAPODS: 1.10.1
