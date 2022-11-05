@@ -5,20 +5,20 @@ import UIKit
 var imageProcessingShareGroup:EAGLSharegroup? = nil
 
 public class OpenGLContext: SerialDispatch {
-    lazy var framebufferCache:FramebufferCache = {
+    public lazy var framebufferCache:FramebufferCache = {
         return FramebufferCache(context:self)
     }()
     var shaderCache:[String:ShaderProgram] = [:]
     public let standardImageVBO:GLuint
     var textureVBOs:[Rotation:GLuint] = [:]
 
-    let context:EAGLContext
+    public let context:EAGLContext
     
-    lazy var passthroughShader:ShaderProgram = {
+    public lazy var passthroughShader:ShaderProgram = {
         return crashOnShaderCompileFailure("OpenGLContext"){return try self.programForVertexShader(OneInputVertexShader, fragmentShader:PassthroughFragmentShader)}
     }()
 
-    lazy var coreVideoTextureCache:CVOpenGLESTextureCache = {
+    public lazy var coreVideoTextureCache:CVOpenGLESTextureCache = {
         var newTextureCache:CVOpenGLESTextureCache? = nil
         let err = CVOpenGLESTextureCacheCreate(kCFAllocatorDefault, nil, self.context, nil, &newTextureCache)
         return newTextureCache!
@@ -30,16 +30,19 @@ public class OpenGLContext: SerialDispatch {
     
     // MARK: -
     // MARK: Initialization and teardown
-
-    init() {
+    
+    public init() {
         serialDispatchQueue.setSpecific(key:dispatchQueueKey, value:81)
         
         let generatedContext:EAGLContext?
         if let shareGroup = imageProcessingShareGroup {
-            generatedContext = EAGLContext(api:.openGLES2, sharegroup:shareGroup)
+//             generatedContext = EAGLContext(api:.openGLES2, sharegroup:shareGroup)
+            generatedContext = EAGLContext(api:.openGLES3, sharegroup:shareGroup)
         } else {
-            generatedContext = EAGLContext(api:.openGLES2)
+            generatedContext = EAGLContext(api:.openGLES3)
+//             generatedContext = EAGLContext(api:.openGLES2)
         }
+        
         
         guard let concreteGeneratedContext = generatedContext else {
             fatalError("Unable to create an OpenGL ES 2.0 context. The GPUImage framework requires OpenGL ES 2.0 support to work.")
@@ -53,6 +56,8 @@ public class OpenGLContext: SerialDispatch {
 
         glDisable(GLenum(GL_DEPTH_TEST))
         glEnable(GLenum(GL_TEXTURE_2D))
+        
+        print(String(EAGL_MAJOR_VERSION) + "." + String(EAGL_MINOR_VERSION))
     }
     
     // MARK: -
@@ -73,7 +78,7 @@ public class OpenGLContext: SerialDispatch {
     // MARK: -
     // MARK: Device capabilities
     
-    func supportsTextureCaches() -> Bool {
+    public func supportsTextureCaches() -> Bool {
 #if (arch(i386) || arch(x86_64)) && os(iOS)
         return false // Simulator glitches out on use of texture caches
 #else

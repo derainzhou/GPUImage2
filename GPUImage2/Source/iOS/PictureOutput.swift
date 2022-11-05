@@ -6,7 +6,7 @@ public enum PictureFileFormat {
     case jpeg
 }
 
-public class PictureOutput: ImageConsumer {
+open class PictureOutput: ImageConsumer {
     public var encodedImageAvailableCallback:((Data) -> ())?
     public var encodedImageFormat:PictureFileFormat = .png
     public var imageAvailableCallback:((UIImage) -> ())?
@@ -106,7 +106,7 @@ public class PictureOutput: ImageConsumer {
 }
 
 public extension ImageSource {
-    public func saveNextFrameToURL(_ url:URL, format:PictureFileFormat) {
+    func saveNextFrameToURL(_ url:URL, format:PictureFileFormat) {
         let pictureOutput = PictureOutput()
         pictureOutput.saveNextFrameToURL(url, format:format)
         self --> pictureOutput

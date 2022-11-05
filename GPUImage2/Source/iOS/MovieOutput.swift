@@ -10,8 +10,8 @@ public class MovieOutput: ImageConsumer, AudioEncodingTarget {
     public let maximumInputs:UInt = 1
     
     let assetWriter:AVAssetWriter
-    let assetWriterVideoInput:AVAssetWriterInput
-    var assetWriterAudioInput:AVAssetWriterInput?
+    public let assetWriterVideoInput:AVAssetWriterInput
+    public var assetWriterAudioInput:AVAssetWriterInput?
 
     let assetWriterPixelBufferInput:AVAssetWriterInputPixelBufferAdaptor
     let size:Size
@@ -144,6 +144,7 @@ public class MovieOutput: ImageConsumer, AudioEncodingTarget {
             debugPrint("Had to drop a frame at time \(frameTime)")
             return
         }
+        
         
         if !sharedImageProcessingContext.supportsTextureCaches() {
             let pixelBufferStatus = CVPixelBufferPoolCreatePixelBuffer(nil, assetWriterPixelBufferInput.pixelBufferPool!, &pixelBuffer)

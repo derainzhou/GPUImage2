@@ -31,13 +31,13 @@ public class Framebuffer {
     public var timingStyle:FramebufferTimingStyle = .stillImage
     public var orientation:ImageOrientation
 
-    public let texture:GLuint
-    let framebuffer:GLuint?
-    let stencilBuffer:GLuint?
+    public var texture:GLuint
+    public var framebuffer:GLuint?
+    public let stencilBuffer:GLuint?
     public let size:GLSize
-    let internalFormat:Int32
-    let format:Int32
-    let type:Int32
+    public let internalFormat:Int32
+    public let format:Int32
+    public let type:Int32
 
     let hash:Int64
     let textureOverride:Bool
@@ -82,7 +82,7 @@ public class Framebuffer {
         if (!textureOverride) {
             var mutableTexture = texture
             glDeleteTextures(1, &mutableTexture)
-            debugPrint("Delete texture at size: \(size)")
+            // debugPrint("Delete texture at size: \(size)")
         }
         
         if let framebuffer = framebuffer {
@@ -147,11 +147,11 @@ public class Framebuffer {
 
     weak var cache:FramebufferCache?
     var framebufferRetainCount = 0
-    func lock() {
+    public func lock() {
         framebufferRetainCount += 1
     }
 
-    func resetRetainCount() {
+    public func resetRetainCount() {
         framebufferRetainCount = 0
     }
     

@@ -1,5 +1,4 @@
 import XCTest
-import GPUImage2
 
 class Tests: XCTestCase {
     

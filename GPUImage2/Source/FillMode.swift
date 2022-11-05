@@ -5,7 +5,7 @@ public enum FillMode {
     case preserveAspectRatio
     case preserveAspectRatioAndFill
     
-    func transformVertices(_ vertices:[GLfloat], fromInputSize:GLSize, toFitSize:GLSize) -> [GLfloat] {
+    public func transformVertices(_ vertices:[GLfloat], fromInputSize:GLSize, toFitSize:GLSize) -> [GLfloat] {
         guard (vertices.count == 8) else { fatalError("Attempted to transform a non-quad to account for fill mode.") }
         
         let aspectRatio = GLfloat(fromInputSize.height) / GLfloat(fromInputSize.width)

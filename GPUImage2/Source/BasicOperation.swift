@@ -41,10 +41,10 @@ open class BasicOperation: ImageProcessingOperation {
 
     public let targets = TargetContainer()
     public let sources = SourceContainer()
-    var shader:ShaderProgram
-    var inputFramebuffers = [UInt:Framebuffer]()
-    var renderFramebuffer:Framebuffer!
-    var outputFramebuffer:Framebuffer { get { return renderFramebuffer } }
+    public var shader:ShaderProgram
+    public var inputFramebuffers = [UInt:Framebuffer]()
+    public var renderFramebuffer:Framebuffer!
+    public var outputFramebuffer:Framebuffer { get { return renderFramebuffer } }
     let usesAspectRatio:Bool
     let maskImageRelay = ImageRelay()
     var maskFramebuffer:Framebuffer?
@@ -78,13 +78,13 @@ open class BasicOperation: ImageProcessingOperation {
     }
     
     deinit {
-        debugPrint("Deallocating operation: \(self)")
+        //debugPrint("Deallocating operation: \(self)")
     }
     
     // MARK: -
     // MARK: Rendering
     
-    public func newFramebufferAvailable(_ framebuffer:Framebuffer, fromSourceIndex:UInt) {
+    open func newFramebufferAvailable(_ framebuffer:Framebuffer, fromSourceIndex:UInt) {
         if let previousFramebuffer = inputFramebuffers[fromSourceIndex] {
             previousFramebuffer.unlock()
         }
@@ -123,12 +123,12 @@ open class BasicOperation: ImageProcessingOperation {
         }
     }
     
-    func internalRenderFunction(_ inputFramebuffer:Framebuffer, textureProperties:[InputTextureProperties]) {
+     open func internalRenderFunction(_ inputFramebuffer:Framebuffer, textureProperties:[InputTextureProperties]) {
         renderQuadWithShader(shader, uniformSettings:uniformSettings, vertexBufferObject:sharedImageProcessingContext.standardImageVBO, inputTextures:textureProperties)
         releaseIncomingFramebuffers()
     }
     
-    func releaseIncomingFramebuffers() {
+    open func releaseIncomingFramebuffers() {
         var remainingFramebuffers = [UInt:Framebuffer]()
         // If all inputs are still images, have this output behave as one
         renderFramebuffer.timingStyle = .stillImage

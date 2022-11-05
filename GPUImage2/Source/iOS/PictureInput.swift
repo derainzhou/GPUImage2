@@ -3,7 +3,7 @@ import UIKit
 
 public class PictureInput: ImageSource {
     public let targets = TargetContainer()
-    var imageFramebuffer:Framebuffer!
+    public var imageFramebuffer:Framebuffer!
     var hasProcessedImage:Bool = false
     
     public init(image:CGImage, smoothlyScaleOutput:Bool = false, orientation:ImageOrientation = .portrait) {
@@ -138,7 +138,7 @@ public class PictureInput: ImageSource {
             }
         }
     }
-    
+
     public func transmitPreviousImage(to target:ImageConsumer, atIndex:UInt) {
         if hasProcessedImage {
             imageFramebuffer.lock()
