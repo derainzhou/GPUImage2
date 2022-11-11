@@ -84,13 +84,19 @@ public class PictureInput: ImageSource {
             let imageContext = CGContext(data: imageData, width: Int(widthToUseForTexture), height: Int(heightToUseForTexture), bitsPerComponent: 8, bytesPerRow: Int(widthToUseForTexture) * 4, space: genericRGBColorspace,  bitmapInfo: CGImageAlphaInfo.premultipliedFirst.rawValue | CGBitmapInfo.byteOrder32Little.rawValue)
             //        CGContextSetBlendMode(imageContext, kCGBlendModeCopy); // From Technical Q&A QA1708: http://developer.apple.com/library/ios/#qa/qa1708/_index.html
             imageContext?.draw(image, in:CGRect(x:0.0, y:0.0, width:CGFloat(widthToUseForTexture), height:CGFloat(heightToUseForTexture)))
-        } else {
+        }
+        /*
+        else {
             // Access the raw image bytes directly
             dataFromImageDataProvider = image.dataProvider?.data
             imageData = UnsafeMutablePointer<GLubyte>(mutating:CFDataGetBytePtr(dataFromImageDataProvider))
         }
-        
+        */
         sharedImageProcessingContext.runOperationSynchronously{
+            if !shouldRedrawUsingCoreGraphics {
+                dataFromImageDataProvider = image.dataProvider?.data
+                imageData = UnsafeMutablePointer<GLubyte>(mutating:CFDataGetBytePtr(dataFromImageDataProvider))
+            }
             do {
                 // TODO: Alter orientation based on metadata from photo
                 self.imageFramebuffer = try Framebuffer(context:sharedImageProcessingContext, orientation:orientation, size:GLSize(width:widthToUseForTexture, height:heightToUseForTexture), textureOnly:true)
