@@ -1,3 +1,7 @@
+#if os(Linux)
+import Glibc
+let M_PI = 3.14159265359 // TODO: remove this once Foundation pulls this in on Linux
+#endif
 
 import Foundation
 
@@ -72,7 +76,7 @@ func vertexShaderForStandardGaussianBlurOfRadius(_ radius:UInt, sigma:Double) ->
     guard (radius > 0) else { return OneInputVertexShader }
     
     let numberOfBlurCoordinates = radius * 2 + 1
-    var shaderString = "attribute vec4 position;\n attribute vec4 inputTextureCoordinate;\n \n uniform highp float texelWidth;\n uniform highp float texelHeight;\n \n varying highp vec2 blurCoordinates[\(numberOfBlurCoordinates)];\n \n void main()\n {\n gl_Position = position;\n \n highp vec2 singleStepOffset = vec2(texelWidth, texelHeight);\n"
+    var shaderString = "attribute vec4 position;\n attribute vec4 inputTextureCoordinate;\n \n uniform float texelWidth;\n uniform float texelHeight;\n \n varying vec2 blurCoordinates[\(numberOfBlurCoordinates)];\n \n void main()\n {\n gl_Position = position;\n \n vec2 singleStepOffset = vec2(texelWidth, texelHeight);\n"
     for currentBlurCoordinateIndex in 0..<numberOfBlurCoordinates {
         let offsetFromCenter = Int(currentBlurCoordinateIndex) - Int(radius)
         if (offsetFromCenter < 0) {
@@ -94,7 +98,11 @@ func fragmentShaderForStandardGaussianBlurOfRadius(_ radius:UInt, sigma:Double) 
     let gaussianWeights = standardGaussianWeightsForRadius(radius, sigma:sigma)
     
     let numberOfBlurCoordinates = radius * 2 + 1
+#if GLES
     var shaderString = "uniform sampler2D inputImageTexture;\n \n varying highp vec2 blurCoordinates[\(numberOfBlurCoordinates)];\n \n void main()\n {\n lowp vec4 sum = vec4(0.0);\n"
+#else
+    var shaderString = "uniform sampler2D inputImageTexture;\n \n varying vec2 blurCoordinates[\(numberOfBlurCoordinates)];\n \n void main()\n {\n vec4 sum = vec4(0.0);\n"
+#endif
 
     for currentBlurCoordinateIndex in 0..<numberOfBlurCoordinates {
         let offsetFromCenter = Int(currentBlurCoordinateIndex) - Int(radius)
@@ -134,7 +142,7 @@ func vertexShaderForOptimizedGaussianBlurOfRadius(_ radius:UInt, sigma:Double) -
     let numberOfOptimizedOffsets = optimizedOffsets.count
     
     // Header
-    var shaderString = "attribute vec4 position;\n attribute vec4 inputTextureCoordinate;\n \n uniform highp float texelWidth;\n uniform highp float texelHeight;\n \n varying highp vec2 blurCoordinates[\((1 + (numberOfOptimizedOffsets * 2)))];\n \n void main()\n {\n gl_Position = position;\n \n vec2 singleStepOffset = vec2(texelWidth, texelHeight);\n"
+    var shaderString = "attribute vec4 position;\n attribute vec4 inputTextureCoordinate;\n \n uniform float texelWidth;\n uniform float texelHeight;\n \n varying vec2 blurCoordinates[\((1 + (numberOfOptimizedOffsets * 2)))];\n \n void main()\n {\n gl_Position = position;\n \n vec2 singleStepOffset = vec2(texelWidth, texelHeight);\n"
     shaderString += "blurCoordinates[0] = inputTextureCoordinate.xy;\n"
     for currentOptimizedOffset in 0..<numberOfOptimizedOffsets {
         shaderString += "blurCoordinates[\(((currentOptimizedOffset * 2) + 1))] = inputTextureCoordinate.xy + singleStepOffset * \(optimizedOffsets[currentOptimizedOffset]);\n"
@@ -151,8 +159,12 @@ func fragmentShaderForOptimizedGaussianBlurOfRadius(_ radius:UInt, sigma:Double)
     let standardWeights = standardGaussianWeightsForRadius(radius, sigma:sigma)
     let numberOfOptimizedOffsets = min(radius / 2 + (radius % 2), 7)
     let trueNumberOfOptimizedOffsets = radius / 2 + (radius % 2)
-    
-    var shaderString = "uniform sampler2D inputImageTexture;\n uniform highp float texelWidth;\n uniform highp float texelHeight;\n \n varying highp vec2 blurCoordinates[\(1 + (numberOfOptimizedOffsets * 2))];\n \n void main()\n {\n lowp vec4 sum = vec4(0.0);\n"
+
+#if GLES
+        var shaderString = "uniform sampler2D inputImageTexture;\n uniform highp float texelWidth;\n uniform highp float texelHeight;\n \n varying highp vec2 blurCoordinates[\(1 + (numberOfOptimizedOffsets * 2))];\n \n void main()\n {\n lowp vec4 sum = vec4(0.0);\n"
+#else
+        var shaderString = "uniform sampler2D inputImageTexture;\n uniform float texelWidth;\n uniform float texelHeight;\n \n varying vec2 blurCoordinates[\(1 + (numberOfOptimizedOffsets * 2))];\n \n void main()\n {\n vec4 sum = vec4(0.0);\n"
+#endif
 
     // Inner texture loop
     shaderString += "sum += texture2D(inputImageTexture, blurCoordinates[0]) * \(standardWeights[0]);\n"
@@ -168,7 +180,11 @@ func fragmentShaderForOptimizedGaussianBlurOfRadius(_ radius:UInt, sigma:Double)
     
     // If the number of required samples exceeds the amount we can pass in via varyings, we have to do dependent texture reads in the fragment shader
     if (trueNumberOfOptimizedOffsets > numberOfOptimizedOffsets) {
-        shaderString += "highp vec2 singleStepOffset = vec2(texelWidth, texelHeight);\n"
+#if GLES
+            shaderString += "highp vec2 singleStepOffset = vec2(texelWidth, texelHeight);\n"
+#else
+            shaderString += "vec2 singleStepOffset = vec2(texelWidth, texelHeight);\n"
+#endif
     }
 
     for currentOverlowTextureRead in numberOfOptimizedOffsets..<trueNumberOfOptimizedOffsets {

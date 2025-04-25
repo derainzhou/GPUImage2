@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'GPUImage2'
-  s.version          = '0.1.3'
+  s.version          = '0.1.4'
   s.summary          = '基于GPUImage2自定义滤镜版本'
 
 # This description is used to generate tags and improve search results.
@@ -28,7 +28,9 @@ TODO: Add long description of the pod here.
   s.source           = { :git => 'https://github.com/ATiOSGroup/GPUImage2.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
-  s.ios.deployment_target = '10.0'
+  s.ios.deployment_target = '13.0'
+  s.osx.deployment_target = '13.0'
+
   s.swift_version = '5.0'
   
   s.source_files = 'GPUImage2/**/*'
@@ -37,11 +39,4 @@ TODO: Add long description of the pod here.
   s.requires_arc = true
   s.xcconfig = { 'CLANG_MODULES_AUTOLINK' => 'YES', 'OTHER_SWIFT_FLAGS' => "$(inherited) -DGLES"}
 
-  # s.resource_bundles = {
-  #   'GPUImage2' => ['GPUImage2/Assets/*.png']
-  # }
-
-  # s.public_header_files = 'Pod/Classes/**/*.h'
-  # s.frameworks = 'UIKit', 'MapKit'
-  # s.dependency 'AFNetworking', '~> 2.3'
 end

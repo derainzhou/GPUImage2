@@ -7,17 +7,28 @@
 //
 
 import UIKit
+import GPUImage2
 
 class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-    }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        guard let originalUIImage = UIImage(named: "IMG_3705.jpeg") else { return }
+
+        let filter = BrightnessAdjustment()
+        let pictureInput = PictureInput(image: originalUIImage)
+        pictureInput.addTarget(filter)
+
+        let pictureOutput = PictureOutput()
+        filter.addTarget(pictureOutput)
+
+        // 设置回调
+        pictureOutput.imageAvailableCallback = { processedUIImage in
+            print("图片处理完成回调触发！处理后的图像: \(processedUIImage)")
+        }
+
+        pictureInput.processImage(synchronously: true)
     }
 
 }

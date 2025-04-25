@@ -1,4 +1,19 @@
+#if canImport(OpenGL)
+import OpenGL.GL3
+#endif
+
+#if canImport(OpenGLES)
 import OpenGLES
+#endif
+
+#if canImport(COpenGLES)
+import COpenGLES.gles2
+let GL_BGRA = GL_RGBA // A hack: Raspberry Pi needs this or framebuffer creation fails
+#endif
+
+#if canImport(COpenGL)
+import COpenGL
+#endif
 
 public enum PixelFormat {
     case bgra

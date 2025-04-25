@@ -1,4 +1,18 @@
+#if canImport(OpenGL)
+import OpenGL.GL3
+#endif
+
+#if canImport(OpenGLES)
 import OpenGLES
+#endif
+
+#if canImport(COpenGLES)
+import COpenGLES.gles2
+#endif
+
+#if canImport(COpenGL)
+import COpenGL
+#endif
 
 public class AverageLuminanceExtractor: BasicOperation {
     public var extractedLuminanceCallback:((Float) -> ())?
@@ -7,7 +21,7 @@ public class AverageLuminanceExtractor: BasicOperation {
         super.init(vertexShader:AverageColorVertexShader, fragmentShader:AverageLuminanceFragmentShader)
     }
     
-    override func renderFrame() {
+    public override func renderFrame() {
         // Reduce to luminance before passing into the downsampling
         // TODO: Combine this with the first stage of the downsampling by doing reduction here
         let luminancePassShader = crashOnShaderCompileFailure("AverageLuminance"){try sharedImageProcessingContext.programForVertexShader(defaultVertexShaderForInputs(1), fragmentShader:LuminanceFragmentShader)}

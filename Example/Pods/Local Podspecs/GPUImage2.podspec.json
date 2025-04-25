@@ -1,6 +1,6 @@
 {
   "name": "GPUImage2",
-  "version": "0.1.2",
+  "version": "0.1.4",
   "summary": "基于GPUImage2自定义滤镜版本",
   "description": "TODO: Add long description of the pod here.",
   "homepage": "https://github.com/ZDerain/GPUImage2",
@@ -13,10 +13,11 @@
   },
   "source": {
     "git": "https://github.com/ATiOSGroup/GPUImage2.git",
-    "tag": "0.1.2"
+    "tag": "0.1.4"
   },
   "platforms": {
-    "ios": "10.0"
+    "ios": "13.0",
+    "osx": "13.0"
   },
   "swift_versions": "5.0",
   "source_files": "GPUImage2/Source/**/*.{swift}",

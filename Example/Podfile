@@ -1,6 +1,12 @@
 use_frameworks!
 
 target 'GPUImage2_Example' do
+  platform :ios, '13.0'
   pod 'GPUImage2', :path => '../'
+end
 
+
+target 'GPUImage2_Example_macOS' do
+  platform :osx, '13.0'
+  pod 'GPUImage2', :path => '../'
 end

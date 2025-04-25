@@ -1,4 +1,19 @@
+#if canImport(OpenGL)
+import OpenGL.GL
+#endif
+
+#if canImport(OpenGLES)
 import OpenGLES
+#endif
+
+#if canImport(COpenGLES)
+import COpenGLES.gles2
+#endif
+
+#if canImport(COpenGL)
+import COpenGL
+#endif
+
 
 public class CircleGenerator: ImageGenerator {
     let circleShader:ShaderProgram

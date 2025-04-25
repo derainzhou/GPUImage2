@@ -41,10 +41,10 @@ open class BasicOperation: ImageProcessingOperation {
 
     public let targets = TargetContainer()
     public let sources = SourceContainer()
-    public var shader:ShaderProgram
-    public var inputFramebuffers = [UInt:Framebuffer]()
-    public var renderFramebuffer:Framebuffer!
-    public var outputFramebuffer:Framebuffer { get { return renderFramebuffer } }
+    var shader:ShaderProgram
+    var inputFramebuffers = [UInt:Framebuffer]()
+    var renderFramebuffer:Framebuffer!
+    var outputFramebuffer:Framebuffer { get { return renderFramebuffer } }
     let usesAspectRatio:Bool
     let maskImageRelay = ImageRelay()
     var maskFramebuffer:Framebuffer?
@@ -78,7 +78,7 @@ open class BasicOperation: ImageProcessingOperation {
     }
     
     deinit {
-        //debugPrint("Deallocating operation: \(self)")
+        debugPrint("Deallocating operation: \(self)")
     }
     
     // MARK: -
@@ -103,7 +103,7 @@ open class BasicOperation: ImageProcessingOperation {
         }
     }
     
-    func renderFrame() {
+    open func renderFrame() {
         renderFramebuffer = sharedImageProcessingContext.framebufferCache.requestFramebufferWithProperties(orientation:.portrait, size:sizeOfInitialStageBasedOnFramebuffer(inputFramebuffers[0]!), stencil:mask != nil)
         
         let textureProperties = initialTextureProperties()
@@ -123,7 +123,7 @@ open class BasicOperation: ImageProcessingOperation {
         }
     }
     
-     open func internalRenderFunction(_ inputFramebuffer:Framebuffer, textureProperties:[InputTextureProperties]) {
+    open func internalRenderFunction(_ inputFramebuffer:Framebuffer, textureProperties:[InputTextureProperties]) {
         renderQuadWithShader(shader, uniformSettings:uniformSettings, vertexBufferObject:sharedImageProcessingContext.standardImageVBO, inputTextures:textureProperties)
         releaseIncomingFramebuffers()
     }

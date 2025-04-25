@@ -1,4 +1,19 @@
+#if os(Linux)
+import Glibc
+#endif
+
+#if canImport(OpenGL)
+import OpenGL.GL3
+#endif
+
+#if canImport(OpenGLES)
 import OpenGLES
+#endif
+
+#if canImport(COpenGL)
+import COpenGL
+#endif
+
 
 public enum FillMode {
     case stretch

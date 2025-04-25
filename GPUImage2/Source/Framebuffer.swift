@@ -1,4 +1,24 @@
+#if os(Linux)
+import Glibc
+#endif
+
+#if canImport(OpenGL)
+import OpenGL.GL3
+#endif
+
+#if canImport(OpenGLES)
 import OpenGLES
+#endif
+
+#if canImport(COpenGLES)
+import COpenGLES.gles2
+let GL_BGRA = GL_RGBA // A hack: Raspberry Pi needs this or framebuffer creation fails
+#endif
+
+#if canImport(COpenGL)
+import COpenGL
+#endif
+
 import Foundation
 
 // TODO: Add a good lookup table to this to allow for detailed error messages
@@ -31,8 +51,8 @@ public class Framebuffer {
     public var timingStyle:FramebufferTimingStyle = .stillImage
     public var orientation:ImageOrientation
 
-    public var texture:GLuint
-    public var framebuffer:GLuint?
+    public let texture:GLuint
+    public let framebuffer:GLuint?
     public let stencilBuffer:GLuint?
     public let size:GLSize
     public let internalFormat:Int32
@@ -82,7 +102,7 @@ public class Framebuffer {
         if (!textureOverride) {
             var mutableTexture = texture
             glDeleteTextures(1, &mutableTexture)
-            // debugPrint("Delete texture at size: \(size)")
+            debugPrint("Delete texture at size: \(size)")
         }
         
         if let framebuffer = framebuffer {
@@ -96,7 +116,7 @@ public class Framebuffer {
         }
     }
     
-    func sizeForTargetOrientation(_ targetOrientation:ImageOrientation) -> GLSize {
+    public func sizeForTargetOrientation(_ targetOrientation:ImageOrientation) -> GLSize {
         if self.orientation.rotationNeededForOrientation(targetOrientation).flipsDimensions() {
             return GLSize(width:size.height, height:size.width)
         } else {
@@ -104,7 +124,7 @@ public class Framebuffer {
         }
     }
     
-    func aspectRatioForRotation(_ rotation:Rotation) -> Float {
+    public func aspectRatioForRotation(_ rotation:Rotation) -> Float {
         if rotation.flipsDimensions() {
             return Float(size.width) / Float(size.height)
         } else {

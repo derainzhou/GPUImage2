@@ -13,6 +13,13 @@
 		607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 607FACD91AFB9204008FA782 /* Main.storyboard */; };
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
+		62D21D4F9B9AC47317194977 /* Pods_GPUImage2_Example_macOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3D970FC362609AFDA07F932 /* Pods_GPUImage2_Example_macOS.framework */; };
+		AFD449A82DBB9B0F0012D145 /* IMG_3705.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = AFD449A72DBB9B0F0012D145 /* IMG_3705.jpeg */; };
+		AFD449C32DBBA25E0012D145 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFD449BC2DBBA25E0012D145 /* AppDelegate.swift */; };
+		AFD449C42DBBA25E0012D145 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFD449C12DBBA25E0012D145 /* ViewController.swift */; };
+		AFD449C52DBBA25E0012D145 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AFD449BD2DBBA25E0012D145 /* Assets.xcassets */; };
+		AFD449C62DBBA25E0012D145 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AFD449C02DBBA25E0012D145 /* Main.storyboard */; };
+		AFD449C92DBBA3B40012D145 /* IMG_3705.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = AFD449A72DBB9B0F0012D145 /* IMG_3705.jpeg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,7 +35,17 @@
 		607FACDF1AFB9204008FA782 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		65799D53FDA1B3F933E4B104 /* Pods_GPUImage2_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GPUImage2_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		68815643A70008CFB0D10FC1 /* Pods-GPUImage2_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GPUImage2_Example.release.xcconfig"; path = "Target Support Files/Pods-GPUImage2_Example/Pods-GPUImage2_Example.release.xcconfig"; sourceTree = "<group>"; };
+		6C367A960094BC2F538281FD /* Pods-GPUImage2_Example_macOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GPUImage2_Example_macOS.release.xcconfig"; path = "Target Support Files/Pods-GPUImage2_Example_macOS/Pods-GPUImage2_Example_macOS.release.xcconfig"; sourceTree = "<group>"; };
+		6FCE42828F89CEDA64A4B355 /* Pods-GPUImage2_Example_macOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GPUImage2_Example_macOS.debug.xcconfig"; path = "Target Support Files/Pods-GPUImage2_Example_macOS/Pods-GPUImage2_Example_macOS.debug.xcconfig"; sourceTree = "<group>"; };
+		AFD449A72DBB9B0F0012D145 /* IMG_3705.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = IMG_3705.jpeg; sourceTree = "<group>"; };
+		AFD449AD2DBBA2560012D145 /* GPUImage2_Example_macOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GPUImage2_Example_macOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AFD449BC2DBBA25E0012D145 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		AFD449BD2DBBA25E0012D145 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		AFD449BE2DBBA25E0012D145 /* GPUImage2_Example_macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = GPUImage2_Example_macOS.entitlements; sourceTree = "<group>"; };
+		AFD449BF2DBBA25E0012D145 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		AFD449C12DBBA25E0012D145 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		C63873A2CCE4D50BDED68A0A /* Pods-GPUImage2_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GPUImage2_Tests.debug.xcconfig"; path = "Target Support Files/Pods-GPUImage2_Tests/Pods-GPUImage2_Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		D3D970FC362609AFDA07F932 /* Pods_GPUImage2_Example_macOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GPUImage2_Example_macOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4DE84CB1829057945A8EF65 /* Pods-GPUImage2_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GPUImage2_Example.debug.xcconfig"; path = "Target Support Files/Pods-GPUImage2_Example/Pods-GPUImage2_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		D84D5713A2B0505218294B86 /* Pods_GPUImage2_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GPUImage2_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA2D0F9DB31E463306E01E79 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
@@ -43,6 +60,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		AFD449AA2DBBA2560012D145 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				62D21D4F9B9AC47317194977 /* Pods_GPUImage2_Example_macOS.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -51,6 +76,7 @@
 			children = (
 				607FACF51AFB993E008FA782 /* Podspec Metadata */,
 				607FACD21AFB9204008FA782 /* Example for GPUImage2 */,
+				AFD449C22DBBA25E0012D145 /* GPUImage2_Example_macOS */,
 				607FACD11AFB9204008FA782 /* Products */,
 				8E7964E0CB2AA531C6C0F871 /* Pods */,
 				819BF33CDA62A4E48F6CC17A /* Frameworks */,
@@ -61,6 +87,7 @@
 			isa = PBXGroup;
 			children = (
 				607FACD01AFB9204008FA782 /* GPUImage2_Example.app */,
+				AFD449AD2DBBA2560012D145 /* GPUImage2_Example_macOS.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -73,6 +100,7 @@
 				607FACD91AFB9204008FA782 /* Main.storyboard */,
 				607FACDC1AFB9204008FA782 /* Images.xcassets */,
 				607FACDE1AFB9204008FA782 /* LaunchScreen.xib */,
+				AFD449A72DBB9B0F0012D145 /* IMG_3705.jpeg */,
 				607FACD31AFB9204008FA782 /* Supporting Files */,
 			);
 			name = "Example for GPUImage2";
@@ -102,6 +130,7 @@
 			children = (
 				65799D53FDA1B3F933E4B104 /* Pods_GPUImage2_Example.framework */,
 				D84D5713A2B0505218294B86 /* Pods_GPUImage2_Tests.framework */,
+				D3D970FC362609AFDA07F932 /* Pods_GPUImage2_Example_macOS.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -113,8 +142,22 @@
 				68815643A70008CFB0D10FC1 /* Pods-GPUImage2_Example.release.xcconfig */,
 				C63873A2CCE4D50BDED68A0A /* Pods-GPUImage2_Tests.debug.xcconfig */,
 				369AADE46B40EF597C8769BE /* Pods-GPUImage2_Tests.release.xcconfig */,
+				6FCE42828F89CEDA64A4B355 /* Pods-GPUImage2_Example_macOS.debug.xcconfig */,
+				6C367A960094BC2F538281FD /* Pods-GPUImage2_Example_macOS.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		AFD449C22DBBA25E0012D145 /* GPUImage2_Example_macOS */ = {
+			isa = PBXGroup;
+			children = (
+				AFD449BC2DBBA25E0012D145 /* AppDelegate.swift */,
+				AFD449BD2DBBA25E0012D145 /* Assets.xcassets */,
+				AFD449BE2DBBA25E0012D145 /* GPUImage2_Example_macOS.entitlements */,
+				AFD449C02DBBA25E0012D145 /* Main.storyboard */,
+				AFD449C12DBBA25E0012D145 /* ViewController.swift */,
+			);
+			path = GPUImage2_Example_macOS;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -139,13 +182,32 @@
 			productReference = 607FACD01AFB9204008FA782 /* GPUImage2_Example.app */;
 			productType = "com.apple.product-type.application";
 		};
+		AFD449AC2DBBA2560012D145 /* GPUImage2_Example_macOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AFD449BB2DBBA2570012D145 /* Build configuration list for PBXNativeTarget "GPUImage2_Example_macOS" */;
+			buildPhases = (
+				12C88EDA2D0B1853DF8DBFBC /* [CP] Check Pods Manifest.lock */,
+				AFD449A92DBBA2560012D145 /* Sources */,
+				AFD449AA2DBBA2560012D145 /* Frameworks */,
+				AFD449AB2DBBA2560012D145 /* Resources */,
+				79A57EFE9984A1D125AFD064 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = GPUImage2_Example_macOS;
+			productName = GPUImage2_Example_macOS;
+			productReference = AFD449AD2DBBA2560012D145 /* GPUImage2_Example_macOS.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		607FACC81AFB9204008FA782 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0830;
+				LastSwiftUpdateCheck = 1620;
 				LastUpgradeCheck = 1150;
 				ORGANIZATIONNAME = CocoaPods;
 				TargetAttributes = {
@@ -154,6 +216,10 @@
 						DevelopmentTeam = 789PQG3L64;
 						LastSwiftMigration = 0900;
 						ProvisioningStyle = Manual;
+					};
+					AFD449AC2DBBA2560012D145 = {
+						CreatedOnToolsVersion = 16.2;
+						ProvisioningStyle = Automatic;
 					};
 				};
 			};
@@ -172,6 +238,7 @@
 			projectRoot = "";
 			targets = (
 				607FACCF1AFB9204008FA782 /* GPUImage2_Example */,
+				AFD449AC2DBBA2560012D145 /* GPUImage2_Example_macOS */,
 			);
 		};
 /* End PBXProject section */
@@ -181,15 +248,66 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AFD449A82DBB9B0F0012D145 /* IMG_3705.jpeg in Resources */,
 				607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */,
 				607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */,
 				607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		AFD449AB2DBBA2560012D145 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AFD449C52DBBA25E0012D145 /* Assets.xcassets in Resources */,
+				AFD449C92DBBA3B40012D145 /* IMG_3705.jpeg in Resources */,
+				AFD449C62DBBA25E0012D145 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		12C88EDA2D0B1853DF8DBFBC /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-GPUImage2_Example_macOS-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		79A57EFE9984A1D125AFD064 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-GPUImage2_Example_macOS/Pods-GPUImage2_Example_macOS-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GPUImage2-macOS/GPUImage2.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GPUImage2.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-GPUImage2_Example_macOS/Pods-GPUImage2_Example_macOS-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		C44D89AC2F9DFE3DA8903FF3 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -197,7 +315,7 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-GPUImage2_Example/Pods-GPUImage2_Example-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/GPUImage2/GPUImage2.framework",
+				"${BUILT_PRODUCTS_DIR}/GPUImage2-iOS/GPUImage2.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
@@ -242,6 +360,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		AFD449A92DBBA2560012D145 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AFD449C32DBBA25E0012D145 /* AppDelegate.swift in Sources */,
+				AFD449C42DBBA25E0012D145 /* ViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
@@ -259,6 +386,14 @@
 				607FACDF1AFB9204008FA782 /* Base */,
 			);
 			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+		AFD449C02DBBA25E0012D145 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AFD449BF2DBBA25E0012D145 /* Base */,
+			);
+			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -380,7 +515,7 @@
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 789PQG3L64;
 				INFOPLIST_FILE = GPUImage2/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = tp.tpcleanerpro.pro;
@@ -403,7 +538,7 @@
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 789PQG3L64;
 				INFOPLIST_FILE = GPUImage2/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = tp.tpcleanerpro.pro;
@@ -411,6 +546,83 @@
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = pp_tpcp_dev;
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		AFD449B92DBBA2570012D145 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6FCE42828F89CEDA64A4B355 /* Pods-GPUImage2_Example_macOS.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_ENTITLEMENTS = GPUImage2_Example_macOS/GPUImage2_Example_macOS.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2025 CocoaPods. All rights reserved.";
+				INFOPLIST_KEY_NSMainStoryboardFile = Main;
+				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 15.1;
+				MARKETING_VERSION = 1.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.derain.GPUImage2-Example-macOS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		AFD449BA2DBBA2570012D145 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6C367A960094BC2F538281FD /* Pods-GPUImage2_Example_macOS.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_ENTITLEMENTS = GPUImage2_Example_macOS/GPUImage2_Example_macOS.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2025 CocoaPods. All rights reserved.";
+				INFOPLIST_KEY_NSMainStoryboardFile = Main;
+				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 15.1;
+				MARKETING_VERSION = 1.0;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.derain.GPUImage2-Example-macOS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
@@ -432,6 +644,15 @@
 			buildConfigurations = (
 				607FACF01AFB9204008FA782 /* Debug */,
 				607FACF11AFB9204008FA782 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AFD449BB2DBBA2570012D145 /* Build configuration list for PBXNativeTarget "GPUImage2_Example_macOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AFD449B92DBBA2570012D145 /* Debug */,
+				AFD449BA2DBBA2570012D145 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

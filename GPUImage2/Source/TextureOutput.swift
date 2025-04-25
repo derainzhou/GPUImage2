@@ -1,4 +1,18 @@
+#if canImport(OpenGL)
+import OpenGL.GL3
+#endif
+
+#if canImport(OpenGLES)
 import OpenGLES
+#endif
+
+#if canImport(COpenGLES)
+import COpenGLES.gles2
+#endif
+
+#if canImport(COpenGL)
+import COpenGL
+#endif
 
 public class TextureOutput: ImageConsumer {
     public var newTextureAvailableCallback:((GLuint) -> ())?
