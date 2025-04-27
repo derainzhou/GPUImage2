@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'GPUImage2'
-  s.version          = '0.1.4'
+  s.version          = '0.1.5'
   s.summary          = '基于GPUImage2自定义滤镜版本'
 
 # This description is used to generate tags and improve search results.
@@ -28,6 +28,8 @@ TODO: Add long description of the pod here.
   s.source           = { :git => 'https://github.com/ATiOSGroup/GPUImage2.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
+  s.pod_target_xcconfig = { 'GCC_PREPROCESSOR_DEFINITIONS' => '$(inherited) GL_SILENCE_DEPRECATION=1 GLES_SILENCE_DEPRECATION=1' }
+  
   s.ios.deployment_target = '13.0'
   s.osx.deployment_target = '13.0'
 

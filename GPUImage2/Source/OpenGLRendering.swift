@@ -78,8 +78,60 @@ public func renderQuadWithShader(_ shader:ShaderProgram, uniformSettings:ShaderU
     uniformSettings?.restoreShaderSettings(shader)
 
     guard let positionAttribute = shader.attributeIndex("position") else { fatalError("A position attribute was missing from the shader program during rendering.") }
+    
+#if os(macOS)
+    glBindVertexArray(sharedImageProcessingContext.standardVAO)
 
+    glBindBuffer(GLenum(GL_ARRAY_BUFFER), sharedImageProcessingContext.standardImageVBO)
+    glEnableVertexAttribArray(positionAttribute)
+    glVertexAttribPointer(positionAttribute, 2, GLenum(GL_FLOAT), GLboolean(GL_FALSE), 0, nil)
 
+    // Texture Coordinates (assuming only one input texture for simplicity here)
+    if let texCoordAttribute = shader.attributeIndex("inputTextureCoordinate") {
+         guard let standardTexCoordVBO = sharedImageProcessingContext.textureVBOs[.noRotation] else { fatalError("Standard texture coordinate VBO not found") }
+         glBindBuffer(GLenum(GL_ARRAY_BUFFER), standardTexCoordVBO) // Bind the correct VBO
+         glEnableVertexAttribArray(texCoordAttribute)
+         glVertexAttribPointer(texCoordAttribute, 2, GLenum(GL_FLOAT), GLboolean(GL_FALSE), 0, nil)
+    }
+    
+    glBindBuffer(GLenum(GL_ARRAY_BUFFER), 0) 
+
+    // --- Texture Binding ---
+    for (index, inputTexture) in inputTextures.enumerated() {
+        if let textureCoordinateAttribute = shader.attributeIndex("inputTextureCoordinate".withNonZeroSuffix(index)) {
+            switch inputTexture.textureStorage {
+                case let .textureCoordinates(textureCoordinates):
+                    glVertexAttribPointer(textureCoordinateAttribute, 2, GLenum(GL_FLOAT), 0, 0, textureCoordinates)
+                case let .textureVBO(textureVBO):
+                    glBindBuffer(GLenum(GL_ARRAY_BUFFER), textureVBO)
+                    glVertexAttribPointer(textureCoordinateAttribute, 2, GLenum(GL_FLOAT), 0, 0, nil)
+                    glBindBuffer(GLenum(GL_ARRAY_BUFFER), 0)
+            }
+        } else if (index == 0) {
+            fatalError("The required attribute named inputTextureCoordinate was missing from the shader program during rendering.")
+        }
+        
+        glActiveTexture(textureUnitForIndex(index))
+        glBindTexture(GLenum(GL_TEXTURE_2D), inputTexture.texture)
+
+        shader.setValue(GLint(index), forUniform:"inputImageTexture".withNonZeroSuffix(index))
+    }
+
+    // Draw Call
+    glDrawArrays(GLenum(GL_TRIANGLE_STRIP), 0, 4)
+
+    glDisableVertexAttribArray(positionAttribute)
+    if let texCoordAttribute = shader.attributeIndex("inputTextureCoordinate") {
+        glDisableVertexAttribArray(texCoordAttribute)
+    }
+    glBindVertexArray(0)
+
+    for (index, _) in inputTextures.enumerated() {
+        glActiveTexture(textureUnitForIndex(index))
+        glBindTexture(GLenum(GL_TEXTURE_2D), 0)
+    }
+    
+#else
     if let boundVBO = vertexBufferObject {
         glBindBuffer(GLenum(GL_ARRAY_BUFFER), boundVBO)
         glVertexAttribPointer(positionAttribute, 2, GLenum(GL_FLOAT), 0, 0, nil)
@@ -87,7 +139,7 @@ public func renderQuadWithShader(_ shader:ShaderProgram, uniformSettings:ShaderU
     } else {
         glVertexAttribPointer(positionAttribute, 2, GLenum(GL_FLOAT), 0, 0, vertices!)
     }
-
+    
     for (index, inputTexture) in inputTextures.enumerated() {
         if let textureCoordinateAttribute = shader.attributeIndex("inputTextureCoordinate".withNonZeroSuffix(index)) {
             switch inputTexture.textureStorage {
@@ -118,6 +170,7 @@ public func renderQuadWithShader(_ shader:ShaderProgram, uniformSettings:ShaderU
         glActiveTexture(textureUnitForIndex(index))
         glBindTexture(GLenum(GL_TEXTURE_2D), 0)
     }
+#endif
 }
 
 public func clearFramebufferWithColor(_ color:Color) {

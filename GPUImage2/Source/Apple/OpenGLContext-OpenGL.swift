@@ -13,7 +13,8 @@ public class OpenGLContext: SerialDispatch {
     var shaderCache:[String:ShaderProgram] = [:]
     public let standardImageVBO:GLuint
     var textureVBOs:[Rotation:GLuint] = [:]
-    
+    var standardVAO: GLuint = 0
+
     public let context:NSOpenGLContext
     
     public lazy var passthroughShader:ShaderProgram = {
@@ -30,11 +31,14 @@ public class OpenGLContext: SerialDispatch {
         serialDispatchQueue.setSpecific(key:dispatchQueueKey, value:81)
 
         let pixelFormatAttributes:[NSOpenGLPixelFormatAttribute] = [
+            NSOpenGLPixelFormatAttribute(NSOpenGLPFAOpenGLProfile),
+            NSOpenGLPixelFormatAttribute(NSOpenGLProfileVersion3_2Core),
+
             NSOpenGLPixelFormatAttribute(NSOpenGLPFADoubleBuffer),
-            NSOpenGLPixelFormatAttribute(NSOpenGLPFAAccelerated), 0,
+            NSOpenGLPixelFormatAttribute(NSOpenGLPFAAccelerated),
+            
             0
         ]
-        
         guard let pixelFormat = NSOpenGLPixelFormat(attributes:pixelFormatAttributes) else {
             fatalError("No appropriate pixel format found when creating OpenGL context.")
         }
@@ -46,11 +50,57 @@ public class OpenGLContext: SerialDispatch {
         self.context = generatedContext
         generatedContext.makeCurrentContext()
         
+        print("--- OpenGL Context Info ---")
+
+        var major: GLint = 0
+        var minor: GLint = 0
+        glGetIntegerv(GLenum(GL_MAJOR_VERSION), &major)
+        glGetIntegerv(GLenum(GL_MINOR_VERSION), &minor)
+        let glGetError = glGetError()
+
+        if glGetError == GL_NO_ERROR {
+            print("Actual Context Version (from glGetIntegerv): \(major).\(minor)")
+        } else {
+            print("Error getting GL version integers via glGetIntegerv: \(glGetError)")
+            print("Actual Context Version: Unknown (glGetIntegerv failed)")
+        }
+
+        if let versionStringPtr = glGetString(GLenum(GL_VERSION)) {
+            let versionString = String(cString: versionStringPtr)
+            print("GL_VERSION String: \(versionString)")
+        } else {
+            print("Could not get GL_VERSION string.")
+        }
+
+        if let glslVersionStringPtr = glGetString(GLenum(GL_SHADING_LANGUAGE_VERSION)) {
+            let glslVersionString = String(cString: glslVersionStringPtr)
+            print("GLSL Version String: \(glslVersionString)")
+        } else {
+            print("Could not get GLSL Version string.")
+        }
+        print("--------------------------")
+
+        // Generate and bind VAO
+        glGenVertexArrays(1, &standardVAO)
+        glBindVertexArray(standardVAO)
+
+        // Setup VBOs (their state will be captured by the VAO)
         standardImageVBO = generateVBO(for:standardImageVertices)
         generateTextureVBOs()
         
+        // Unbind VAO
+        glBindVertexArray(0)
+
         glDisable(GLenum(GL_DEPTH_TEST))
         glEnable(GLenum(GL_TEXTURE_2D))
+    }
+    
+    deinit {
+        // TODO: This needs to be done on the GL thread
+        if standardVAO != 0 {
+            glDeleteVertexArraysAPPLE(1, &standardVAO)
+        }
+        // Consider cleaning up VBOs and shader cache as well, potentially on the GL thread.
     }
     
     // MARK: -
