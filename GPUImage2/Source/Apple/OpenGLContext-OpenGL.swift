@@ -14,9 +14,9 @@ public class OpenGLContext: SerialDispatch {
     public let standardImageVBO:GLuint
     var textureVBOs:[Rotation:GLuint] = [:]
     
-    let context:NSOpenGLContext
+    public let context:NSOpenGLContext
     
-    lazy var passthroughShader:ShaderProgram = {
+    public lazy var passthroughShader:ShaderProgram = {
         return crashOnShaderCompileFailure("OpenGLContext"){return try self.programForVertexShader(OneInputVertexShader, fragmentShader:PassthroughFragmentShader)}
     }()
 
@@ -67,7 +67,7 @@ public class OpenGLContext: SerialDispatch {
     // MARK: -
     // MARK: Device capabilities
 
-    func supportsTextureCaches() -> Bool {
+    public func supportsTextureCaches() -> Bool {
         return false
     }
     
