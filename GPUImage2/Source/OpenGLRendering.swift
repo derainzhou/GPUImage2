@@ -76,11 +76,11 @@ public func renderQuadWithShader(_ shader:ShaderProgram, uniformSettings:ShaderU
     sharedImageProcessingContext.makeCurrentContext()
     shader.use()
     uniformSettings?.restoreShaderSettings(shader)
-
-    guard let positionAttribute = shader.attributeIndex("position") else { fatalError("A position attribute was missing from the shader program during rendering.") }
     
 #if os(macOS)
     glBindVertexArray(sharedImageProcessingContext.standardVAO)
+
+    guard let positionAttribute = shader.attributeIndex("position") else { fatalError("A position attribute was missing from the shader program during rendering.") }
 
     glBindBuffer(GLenum(GL_ARRAY_BUFFER), sharedImageProcessingContext.standardImageVBO)
     glEnableVertexAttribArray(positionAttribute)
@@ -132,6 +132,8 @@ public func renderQuadWithShader(_ shader:ShaderProgram, uniformSettings:ShaderU
     }
     
 #else
+    guard let positionAttribute = shader.attributeIndex("position") else { fatalError("A position attribute was missing from the shader program during rendering.") }
+
     if let boundVBO = vertexBufferObject {
         glBindBuffer(GLenum(GL_ARRAY_BUFFER), boundVBO)
         glVertexAttribPointer(positionAttribute, 2, GLenum(GL_FLOAT), 0, 0, nil)
