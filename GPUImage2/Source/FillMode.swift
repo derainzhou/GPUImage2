@@ -14,6 +14,7 @@ import OpenGLES
 import COpenGL
 #endif
 
+import Foundation
 
 public enum FillMode {
     case stretch

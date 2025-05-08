@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'GPUImage2'
-  s.version          = '0.1.5'
+  s.version          = '0.1.6'
   s.summary          = '基于GPUImage2自定义滤镜版本'
 
 # This description is used to generate tags and improve search results.
